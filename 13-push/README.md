@@ -1,28 +1,28 @@
-# 07 — Reading Your Project’s History
+# 13 — Push: Sending Your Work to GitHub
 
 ## Mission
 
-Learn to use history as evidence rather than merely looking at a list of commits.
+Learn how committed local history is sent to a remote and how to investigate push problems.
 
 ## Learning outcomes
 
-- git log
-- compact history
-- commit identifiers
-- authors and dates
-- git show
-- history as a story
-- history during debugging
+- push direction
+- commits before push
+- upstream tracking
+- first push
+- verification
+- rejected pushes
+- force-push risk
 
 ## The mental model
 
-Before learning the commands for **Reading Your Project’s History**, understand the problem they solve. Git operations are safest when you can describe the current state and the desired state in ordinary language first.
+Before learning the commands for **Push: Sending Your Work to GitHub**, understand the problem they solve. Git operations are safest when you can describe the current state and the desired state in ordinary language first.
 
 ### The core loop
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
 In this section, treat **The core loop** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -93,7 +93,7 @@ STOP → INSPECT → UNDERSTAND → RECOVER → VERIFY
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
 In this section, treat **What you should already know** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -140,17 +140,17 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-- Lesson 06: how commits are created and verified.
+- Lesson 12: local and remote repositories.
 
 ## Detailed teaching guide
 
-### 1. Why history matters
+### 1. Push direction
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **1. Why history matters** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **1. Push direction** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -163,7 +163,7 @@ In this section, treat **1. Why history matters** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **1. why history matters**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **1. push direction**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -195,15 +195,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-History lets you investigate how a project arrived at its current state. It can answer questions about changes, authorship, timing, and intent.
+Push transfers committed local history toward a remote repository.
 
-### 2. Read the full log
+### 2. Commit before push
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **2. Read the full log** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **2. Commit before push** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -216,7 +216,7 @@ In this section, treat **2. Read the full log** as a real situation rather than 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **2. read the full log**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **2. commit before push**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -248,15 +248,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git log` contains more metadata than the compact view. Read it slowly: author, date, commit identifier, message, and the relationship to earlier history.
+Uncommitted working-tree changes are not turned into remote commits by push. Commit first.
 
-### 3. Use compact history
+### 3. First push
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **3. Use compact history** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **3. First push** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -269,7 +269,7 @@ In this section, treat **3. Use compact history** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **3. use compact history**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **3. first push**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -301,15 +301,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git log --oneline` is a useful table of contents. It gives you a quick sequence of commit identifiers and messages before you inspect individual commits.
+A common first push is `git push -u origin <branch>`. The branch name must match your actual branch.
 
-### 4. Understand commit identifiers
+### 4. Upstream tracking
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **4. Understand commit identifiers** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **4. Upstream tracking** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -322,7 +322,7 @@ In this section, treat **4. Understand commit identifiers** as a real situation 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **4. understand commit identifiers**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **4. upstream tracking**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -354,15 +354,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Commit identifiers distinguish recorded commits. Short identifiers are convenient displays; Git uses the underlying identifier to identify a precise commit.
+An upstream relationship tells Git which remote branch a local branch corresponds to for common push/pull operations.
 
-### 5. Inspect one commit
+### 5. Verify on GitHub
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **5. Inspect one commit** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **5. Verify on GitHub** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -375,7 +375,7 @@ In this section, treat **5. Inspect one commit** as a real situation rather than
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **5. inspect one commit**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **5. verify on github**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -407,15 +407,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git show <commit>` lets you inspect a commit and its changes. Use it when history tells you a commit may be relevant and you need evidence about what it actually changed.
+After pushing, verify the branch and commit on the remote, not merely the local command output.
 
-### 6. Read metadata
+### 6. Rejected push
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **6. Read metadata** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **6. Rejected push** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -428,7 +428,7 @@ In this section, treat **6. Read metadata** as a real situation rather than a co
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **6. read metadata**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **6. rejected push**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -460,15 +460,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Author, date, message, and identifier provide context. None of them alone proves that a change is correct; combine history with actual diff and testing evidence.
+A rejection is information. Read the reason: permissions, remote-ahead history, policy, authentication, or another condition may be involved.
 
-### 7. Reconstruct a story
+### 7. Remote ahead
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **7. Reconstruct a story** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **7. Remote ahead** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -481,7 +481,7 @@ In this section, treat **7. Reconstruct a story** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **7. reconstruct a story**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **7. remote ahead**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -513,15 +513,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Read commits as a development sequence. Good commit messages make the story easier to understand, but the actual changes remain the strongest evidence.
+If the remote contains commits you do not have, do not force-push by reflex. Investigate and integrate according to the workflow.
 
-### 8. History as debugging evidence
+### 8. Force push warning
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **8. History as debugging evidence** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **8. Force push warning** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -534,7 +534,7 @@ In this section, treat **8. History as debugging evidence** as a real situation 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **8. history as debugging evidence**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **8. force push warning**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -566,15 +566,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-When a feature worked before and is broken now, narrow the investigation using recent commits, affected files, and diffs. History helps you find candidate changes; it does not automatically diagnose the bug.
+Force-push can rewrite remote history and disrupt other people. It requires deliberate understanding and often team approval.
 
-### 9. History versus current files
+### 9. Publishing branches
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **9. History versus current files** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **9. Publishing branches** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -587,7 +587,7 @@ In this section, treat **9. History versus current files** as a real situation r
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **9. history versus current files**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **9. publishing branches**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -619,15 +619,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-The current working tree is today's state. A historical commit is an earlier recorded state. Inspecting the past does not mean you are changing the present.
+A local branch is not automatically on GitHub. Publish branches intentionally according to the project workflow.
 
-### 10. Do not blindly trust commit messages
+### 10. Safe push workflow
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **10. Do not blindly trust commit messages** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **10. Safe push workflow** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -640,7 +640,7 @@ In this section, treat **10. Do not blindly trust commit messages** as a real si
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **10. do not blindly trust commit messages**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **10. safe push workflow**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -672,17 +672,17 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-A commit message is a human description. Verify its claim against the actual changes with `git show` or a diff.
+Inspect branch → review changes → commit → push → read output → verify remote.
 
 ## Command reference
 
-### `git log`
+### `git push`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **`git log`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git push`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -695,7 +695,7 @@ In this section, treat **`git log`** as a real situation rather than a command t
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git log`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git push`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -727,15 +727,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Shows commit history.
+Sends committed local history to a remote.
 
-### `git log --oneline`
+### `git push -u origin <branch>`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
-In this section, treat **`git log --oneline`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git push -u origin <branch>`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -748,7 +748,7 @@ In this section, treat **`git log --oneline`** as a real situation rather than a
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git log --oneline`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git push -u origin <branch>`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -780,60 +780,7 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Shows a compact commit history.
-
-### `git show <commit>`
-
-#### Why this matters
-
-History is evidence. Use it to answer questions about how the project reached its current state.
-
-In this section, treat **`git show <commit>`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
-
-#### Step-by-step thinking
-
-1. **Describe the goal in plain language.** Do not start with a command.
-2. **Inspect the current state.** Use the information Git already provides.
-3. **Predict the result.** Write down what you expect to happen.
-4. **Perform the smallest appropriate operation.** Avoid unrelated changes.
-5. **Read Git's output.** It often tells you what happened or what is required next.
-6. **Verify the result.** Check the repository state, files, history, or project behavior as appropriate.
-
-#### Example situation
-
-Imagine a teammate asks you to deal with a problem involving **`git show <commit>`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
-
-A useful written plan is:
-
-```text
-Goal:
-Current state:
-Evidence I have:
-Operation I am considering:
-What I expect:
-How I will verify:
-```
-
-#### What beginners often get wrong
-
-- Starting with a command instead of a goal.
-- Assuming the current branch or repository location.
-- Treating an error message as a reason to panic instead of information.
-- Running several commands before checking the result of the first one.
-- Using a destructive option because a random tutorial recommended it.
-- Declaring success because a command returned without an error.
-
-#### Verification checklist
-
-- [ ] I know what state I started in.
-- [ ] I know what I intended to change.
-- [ ] I can explain what the operation changed.
-- [ ] I checked the resulting Git state.
-- [ ] I checked the actual project result when relevant.
-- [ ] I can explain what I would do if the result were unexpected.
-
-
-Inspects a commit and its associated changes.
+Pushes a branch and establishes upstream tracking.
 
 ## Common mistakes and troubleshooting
 
@@ -841,7 +788,7 @@ Inspects a commit and its associated changes.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
 In this section, treat **Running commands in the wrong folder** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -894,7 +841,7 @@ Use `pwd`, `ls`, and `git status` before changing repository configuration.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
 In this section, treat **Acting before checking state** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -947,7 +894,7 @@ Stop and inspect status. Git usually gives you enough information to decide the 
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
 In this section, treat **Copying a command without understanding it** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1000,7 +947,7 @@ Use the documentation habit from Lesson 02. Understand what the command changes 
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
 In this section, treat **Assuming success means correctness** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1053,7 +1000,7 @@ A command can succeed while the project remains logically wrong. Test and inspec
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
 In this section, treat **Using a destructive operation casually** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1106,7 +1053,7 @@ Preserve important work and understand what will be discarded or rewritten befor
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
 In this section, treat **Forgetting the current branch** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1159,7 +1106,7 @@ Run `git branch` or `git status` before branch-sensitive operations.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Push shares committed history. It does not replace staging, committing, or verification.
 
 In this section, treat **Ignoring Git output** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1210,17 +1157,17 @@ Git often tells you exactly what happened or what it expects next. Read the comp
 
 ## What you should be able to explain
 
-- [ ] I can explain **git log** in my own words.
-- [ ] I can explain **compact history** in my own words.
-- [ ] I can explain **commit identifiers** in my own words.
-- [ ] I can explain **authors and dates** in my own words.
-- [ ] I can explain **git show** in my own words.
-- [ ] I can explain **history as a story** in my own words.
-- [ ] I can explain **history during debugging** in my own words.
+- [ ] I can explain **push direction** in my own words.
+- [ ] I can explain **commits before push** in my own words.
+- [ ] I can explain **upstream tracking** in my own words.
+- [ ] I can explain **first push** in my own words.
+- [ ] I can explain **verification** in my own words.
+- [ ] I can explain **rejected pushes** in my own words.
+- [ ] I can explain **force-push risk** in my own words.
 
 ## Mastery checkpoint
 
-You should be able to complete the reading your project’s history practice drills without being given a command-by-command recipe. If you forget a command, use documentation and your understanding of repository state to find it.
+You should be able to complete the push: sending your work to github practice drills without being given a command-by-command recipe. If you forget a command, use documentation and your understanding of repository state to find it.
 
 ## Learning a command instead of memorising a command
 

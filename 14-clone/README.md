@@ -1,28 +1,28 @@
-# 07 — Reading Your Project’s History
+# 14 — Clone: Bringing a Repository to Your Computer
 
 ## Mission
 
-Learn to use history as evidence rather than merely looking at a list of commits.
+Learn to start from an unfamiliar GitHub repository and orient yourself safely.
 
 ## Learning outcomes
 
-- git log
-- compact history
-- commit identifiers
-- authors and dates
-- git show
-- history as a story
-- history during debugging
+- clone
+- clone versus ZIP
+- navigation
+- README-first setup
+- remote inspection
+- unfamiliar repositories
+- read/write access
 
 ## The mental model
 
-Before learning the commands for **Reading Your Project’s History**, understand the problem they solve. Git operations are safest when you can describe the current state and the desired state in ordinary language first.
+Before learning the commands for **Clone: Bringing a Repository to Your Computer**, understand the problem they solve. Git operations are safest when you can describe the current state and the desired state in ordinary language first.
 
 ### The core loop
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
 In this section, treat **The core loop** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -93,7 +93,7 @@ STOP → INSPECT → UNDERSTAND → RECOVER → VERIFY
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
 In this section, treat **What you should already know** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -140,17 +140,17 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-- Lesson 06: how commits are created and verified.
+- Lessons 01–02 and 12: terminal navigation and documentation.
 
 ## Detailed teaching guide
 
-### 1. Why history matters
+### 1. Why clone exists
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **1. Why history matters** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **1. Why clone exists** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -163,7 +163,7 @@ In this section, treat **1. Why history matters** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **1. why history matters**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **1. why clone exists**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -195,15 +195,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-History lets you investigate how a project arrived at its current state. It can answer questions about changes, authorship, timing, and intent.
+Clone creates a local Git repository from an existing repository, including history and remote configuration.
 
-### 2. Read the full log
+### 2. Clone versus ZIP
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **2. Read the full log** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **2. Clone versus ZIP** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -216,7 +216,7 @@ In this section, treat **2. Read the full log** as a real situation rather than 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **2. read the full log**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **2. clone versus zip**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -248,15 +248,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git log` contains more metadata than the compact view. Read it slowly: author, date, commit identifier, message, and the relationship to earlier history.
+A ZIP provides files. A clone provides a working Git repository with history and remote information.
 
-### 3. Use compact history
+### 3. Choose a destination
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **3. Use compact history** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **3. Choose a destination** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -269,7 +269,7 @@ In this section, treat **3. Use compact history** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **3. use compact history**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **3. choose a destination**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -301,15 +301,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git log --oneline` is a useful table of contents. It gives you a quick sequence of commit identifiers and messages before you inspect individual commits.
+Use terminal navigation to choose where the repository should live. Avoid cloning projects into confusing nested locations.
 
-### 4. Understand commit identifiers
+### 4. Enter and inspect
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **4. Understand commit identifiers** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **4. Enter and inspect** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -322,7 +322,7 @@ In this section, treat **4. Understand commit identifiers** as a real situation 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **4. understand commit identifiers**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **4. enter and inspect**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -354,15 +354,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Commit identifiers distinguish recorded commits. Short identifiers are convenient displays; Git uses the underlying identifier to identify a precise commit.
+After cloning, use `pwd`, `ls`, `cd`, `git status`, and `git remote -v` to orient yourself.
 
-### 5. Inspect one commit
+### 5. Read README first
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **5. Inspect one commit** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **5. Read README first** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -375,7 +375,7 @@ In this section, treat **5. Inspect one commit** as a real situation rather than
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **5. inspect one commit**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **5. read readme first**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -407,15 +407,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git show <commit>` lets you inspect a commit and its changes. Use it when history tells you a commit may be relevant and you need evidence about what it actually changed.
+The README often explains prerequisites, setup, testing, environment variables, and contribution rules. Read it before running unfamiliar setup commands.
 
-### 6. Read metadata
+### 6. Prerequisites
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **6. Read metadata** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **6. Prerequisites** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -428,7 +428,7 @@ In this section, treat **6. Read metadata** as a real situation rather than a co
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **6. read metadata**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **6. prerequisites**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -460,15 +460,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Author, date, message, and identifier provide context. None of them alone proves that a change is correct; combine history with actual diff and testing evidence.
+Identify required versions and software before installation. Use official documentation when a prerequisite is missing.
 
-### 7. Reconstruct a story
+### 7. Public versus private access
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **7. Reconstruct a story** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **7. Public versus private access** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -481,7 +481,7 @@ In this section, treat **7. Reconstruct a story** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **7. reconstruct a story**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **7. public versus private access**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -513,15 +513,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Read commits as a development sequence. Good commit messages make the story easier to understand, but the actual changes remain the strongest evidence.
+A repository can be readable without granting write access. Clone permission and push permission are different.
 
-### 8. History as debugging evidence
+### 8. Remote verification
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **8. History as debugging evidence** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **8. Remote verification** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -534,7 +534,7 @@ In this section, treat **8. History as debugging evidence** as a real situation 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **8. history as debugging evidence**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **8. remote verification**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -566,15 +566,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-When a feature worked before and is broken now, narrow the investigation using recent commits, affected files, and diffs. History helps you find candidate changes; it does not automatically diagnose the bug.
+After cloning, verify the remote so you know where the local copy came from.
 
-### 9. History versus current files
+### 9. First-team-member workflow
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **9. History versus current files** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **9. First-team-member workflow** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -587,7 +587,7 @@ In this section, treat **9. History versus current files** as a real situation r
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **9. history versus current files**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **9. first-team-member workflow**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -619,15 +619,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-The current working tree is today's state. A historical commit is an earlier recorded state. Inspecting the past does not mean you are changing the present.
+Clone → read docs → inspect state → install prerequisites → verify → understand contribution workflow.
 
-### 10. Do not blindly trust commit messages
+### 10. Clone as a learning exercise
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **10. Do not blindly trust commit messages** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **10. Clone as a learning exercise** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -640,7 +640,7 @@ In this section, treat **10. Do not blindly trust commit messages** as a real si
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **10. do not blindly trust commit messages**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **10. clone as a learning exercise**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -672,17 +672,17 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-A commit message is a human description. Verify its claim against the actual changes with `git show` or a diff.
+Cloning an unfamiliar project is an opportunity to practice the independence skills from Lessons 01 and 02.
 
 ## Command reference
 
-### `git log`
+### `git clone <URL>`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **`git log`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git clone <URL>`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -695,7 +695,7 @@ In this section, treat **`git log`** as a real situation rather than a command t
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git log`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git clone <url>`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -727,15 +727,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Shows commit history.
+Creates a local Git repository from an existing repository.
 
-### `git log --oneline`
+### `git status`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **`git log --oneline`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git status`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -748,7 +748,7 @@ In this section, treat **`git log --oneline`** as a real situation rather than a
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git log --oneline`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git status`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -780,15 +780,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Shows a compact commit history.
+Shows repository state, including branch and reported changes.
 
-### `git show <commit>`
+### `git remote -v`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
-In this section, treat **`git show <commit>`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git remote -v`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -801,7 +801,7 @@ In this section, treat **`git show <commit>`** as a real situation rather than a
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git show <commit>`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git remote -v`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -833,7 +833,7 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Inspects a commit and its associated changes.
+Lists configured remotes and their URLs.
 
 ## Common mistakes and troubleshooting
 
@@ -841,7 +841,7 @@ Inspects a commit and its associated changes.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
 In this section, treat **Running commands in the wrong folder** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -894,7 +894,7 @@ Use `pwd`, `ls`, and `git status` before changing repository configuration.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
 In this section, treat **Acting before checking state** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -947,7 +947,7 @@ Stop and inspect status. Git usually gives you enough information to decide the 
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
 In this section, treat **Copying a command without understanding it** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1000,7 +1000,7 @@ Use the documentation habit from Lesson 02. Understand what the command changes 
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
 In this section, treat **Assuming success means correctness** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1053,7 +1053,7 @@ A command can succeed while the project remains logically wrong. Test and inspec
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
 In this section, treat **Using a destructive operation casually** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1106,7 +1106,7 @@ Preserve important work and understand what will be discarded or rewritten befor
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
 In this section, treat **Forgetting the current branch** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1159,7 +1159,7 @@ Run `git branch` or `git status` before branch-sensitive operations.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Clone gives you a Git repository, not merely a pile of downloaded files.
 
 In this section, treat **Ignoring Git output** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1210,17 +1210,17 @@ Git often tells you exactly what happened or what it expects next. Read the comp
 
 ## What you should be able to explain
 
-- [ ] I can explain **git log** in my own words.
-- [ ] I can explain **compact history** in my own words.
-- [ ] I can explain **commit identifiers** in my own words.
-- [ ] I can explain **authors and dates** in my own words.
-- [ ] I can explain **git show** in my own words.
-- [ ] I can explain **history as a story** in my own words.
-- [ ] I can explain **history during debugging** in my own words.
+- [ ] I can explain **clone** in my own words.
+- [ ] I can explain **clone versus ZIP** in my own words.
+- [ ] I can explain **navigation** in my own words.
+- [ ] I can explain **README-first setup** in my own words.
+- [ ] I can explain **remote inspection** in my own words.
+- [ ] I can explain **unfamiliar repositories** in my own words.
+- [ ] I can explain **read/write access** in my own words.
 
 ## Mastery checkpoint
 
-You should be able to complete the reading your project’s history practice drills without being given a command-by-command recipe. If you forget a command, use documentation and your understanding of repository state to find it.
+You should be able to complete the clone: bringing a repository to your computer practice drills without being given a command-by-command recipe. If you forget a command, use documentation and your understanding of repository state to find it.
 
 ## Learning a command instead of memorising a command
 

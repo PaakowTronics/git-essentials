@@ -1,28 +1,28 @@
-# 07 — Reading Your Project’s History
+# 18 — Undoing Everyday Mistakes
 
 ## Mission
 
-Learn to use history as evidence rather than merely looking at a list of commits.
+Classify a mistake before selecting a recovery operation.
 
 ## Learning outcomes
 
-- git log
-- compact history
-- commit identifiers
-- authors and dates
-- git show
-- history as a story
-- history during debugging
+- working-tree mistakes
+- unstaging
+- restore
+- amend
+- shared history
+- destructive operations
+- verification
 
 ## The mental model
 
-Before learning the commands for **Reading Your Project’s History**, understand the problem they solve. Git operations are safest when you can describe the current state and the desired state in ordinary language first.
+Before learning the commands for **Undoing Everyday Mistakes**, understand the problem they solve. Git operations are safest when you can describe the current state and the desired state in ordinary language first.
 
 ### The core loop
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
 In this section, treat **The core loop** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -93,7 +93,7 @@ STOP → INSPECT → UNDERSTAND → RECOVER → VERIFY
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
 In this section, treat **What you should already know** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -140,17 +140,17 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-- Lesson 06: how commits are created and verified.
+- Lessons 05–08: state, staging, commits, and history.
 
 ## Detailed teaching guide
 
-### 1. Why history matters
+### 1. Classify before undoing
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **1. Why history matters** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **1. Classify before undoing** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -163,7 +163,7 @@ In this section, treat **1. Why history matters** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **1. why history matters**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **1. classify before undoing**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -195,15 +195,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-History lets you investigate how a project arrived at its current state. It can answer questions about changes, authorship, timing, and intent.
+Identify whether the mistake is in the working tree, staging area, latest local commit, or already shared history before choosing recovery.
 
-### 2. Read the full log
+### 2. Unstaged changes
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **2. Read the full log** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **2. Unstaged changes** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -216,7 +216,7 @@ In this section, treat **2. Read the full log** as a real situation rather than 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **2. read the full log**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **2. unstaged changes**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -248,15 +248,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git log` contains more metadata than the compact view. Read it slowly: author, date, commit identifier, message, and the relationship to earlier history.
+An unwanted unstaged change can sometimes be discarded with `git restore <file>`. This can destroy uncommitted content, so inspect first.
 
-### 3. Use compact history
+### 3. Unstage without deleting
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **3. Use compact history** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **3. Unstage without deleting** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -269,7 +269,7 @@ In this section, treat **3. Use compact history** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **3. use compact history**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **3. unstage without deleting**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -301,15 +301,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git log --oneline` is a useful table of contents. It gives you a quick sequence of commit identifiers and messages before you inspect individual commits.
+`git restore --staged <file>` changes staging selection without discarding the file's working-tree content.
 
-### 4. Understand commit identifiers
+### 4. Amend latest local commit
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **4. Understand commit identifiers** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **4. Amend latest local commit** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -322,7 +322,7 @@ In this section, treat **4. Understand commit identifiers** as a real situation 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **4. understand commit identifiers**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **4. amend latest local commit**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -354,15 +354,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Commit identifiers distinguish recorded commits. Short identifiers are convenient displays; Git uses the underlying identifier to identify a precise commit.
+`git commit --amend` replaces the latest commit. It is useful for small local corrections but requires caution once the commit is shared.
 
-### 5. Inspect one commit
+### 5. Shared history
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **5. Inspect one commit** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **5. Shared history** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -375,7 +375,7 @@ In this section, treat **5. Inspect one commit** as a real situation rather than
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **5. inspect one commit**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **5. shared history**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -407,15 +407,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git show <commit>` lets you inspect a commit and its changes. Use it when history tells you a commit may be relevant and you need evidence about what it actually changed.
+Rebasing shared history can cause other developers' copies to diverge. Do not rewrite published history casually.
 
-### 6. Read metadata
+### 6. Destructive operations
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **6. Read metadata** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **6. Destructive operations** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -428,7 +428,7 @@ In this section, treat **6. Read metadata** as a real situation rather than a co
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **6. read metadata**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **6. destructive operations**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -460,15 +460,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Author, date, message, and identifier provide context. None of them alone proves that a change is correct; combine history with actual diff and testing evidence.
+Commands that discard content or rewrite history require a clear understanding of what will be lost and how it can be recovered.
 
-### 7. Reconstruct a story
+### 7. Preserve before destruction
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **7. Reconstruct a story** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **7. Preserve before destruction** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -481,7 +481,7 @@ In this section, treat **7. Reconstruct a story** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **7. reconstruct a story**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **7. preserve before destruction**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -513,15 +513,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Read commits as a development sequence. Good commit messages make the story easier to understand, but the actual changes remain the strongest evidence.
+If you are unsure, preserve the current state before acting. A temporary branch, safe commit, stash, or copy may be appropriate depending on the situation.
 
-### 8. History as debugging evidence
+### 8. Corrective commits
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **8. History as debugging evidence** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **8. Corrective commits** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -534,7 +534,7 @@ In this section, treat **8. History as debugging evidence** as a real situation 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **8. history as debugging evidence**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **8. corrective commits**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -566,15 +566,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-When a feature worked before and is broken now, narrow the investigation using recent commits, affected files, and diffs. History helps you find candidate changes; it does not automatically diagnose the bug.
+For already-shared history, a new corrective commit is often safer than rewriting old history, subject to project policy.
 
-### 9. History versus current files
+### 9. Verification
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **9. History versus current files** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **9. Verification** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -587,7 +587,7 @@ In this section, treat **9. History versus current files** as a real situation r
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **9. history versus current files**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **9. verification**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -619,15 +619,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-The current working tree is today's state. A historical commit is an earlier recorded state. Inspecting the past does not mean you are changing the present.
+Inspect status, history, actual files, and tests after cherry-picking.
 
-### 10. Do not blindly trust commit messages
+### 10. Recovery decision tree
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **10. Do not blindly trust commit messages** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **10. Recovery decision tree** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -640,7 +640,7 @@ In this section, treat **10. Do not blindly trust commit messages** as a real si
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **10. do not blindly trust commit messages**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **10. recovery decision tree**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -672,17 +672,17 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-A commit message is a human description. Verify its claim against the actual changes with `git show` or a diff.
+Classify the location of the mistake first. The farther the mistake has travelled into shared history, the more carefully you should avoid rewriting it.
 
 ## Command reference
 
-### `git log`
+### `git restore <file>`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **`git log`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git restore <file>`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -695,7 +695,7 @@ In this section, treat **`git log`** as a real situation rather than a command t
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git log`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git restore <file>`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -727,15 +727,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Shows commit history.
+Restores a file in the working tree; may discard uncommitted content.
 
-### `git log --oneline`
+### `git restore --staged <file>`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **`git log --oneline`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git restore --staged <file>`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -748,7 +748,7 @@ In this section, treat **`git log --oneline`** as a real situation rather than a
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git log --oneline`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git restore --staged <file>`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -780,15 +780,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Shows a compact commit history.
+Removes a file from the staging area without discarding its working-tree change.
 
-### `git show <commit>`
+### `git commit --amend`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
-In this section, treat **`git show <commit>`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git commit --amend`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -801,7 +801,7 @@ In this section, treat **`git show <commit>`** as a real situation rather than a
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git show <commit>`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git commit --amend`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -833,7 +833,60 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Inspects a commit and its associated changes.
+Replaces the latest commit with a revised commit.
+
+### `git status`
+
+#### Why this matters
+
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
+
+In this section, treat **`git status`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+
+#### Step-by-step thinking
+
+1. **Describe the goal in plain language.** Do not start with a command.
+2. **Inspect the current state.** Use the information Git already provides.
+3. **Predict the result.** Write down what you expect to happen.
+4. **Perform the smallest appropriate operation.** Avoid unrelated changes.
+5. **Read Git's output.** It often tells you what happened or what is required next.
+6. **Verify the result.** Check the repository state, files, history, or project behavior as appropriate.
+
+#### Example situation
+
+Imagine a teammate asks you to deal with a problem involving **`git status`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+
+A useful written plan is:
+
+```text
+Goal:
+Current state:
+Evidence I have:
+Operation I am considering:
+What I expect:
+How I will verify:
+```
+
+#### What beginners often get wrong
+
+- Starting with a command instead of a goal.
+- Assuming the current branch or repository location.
+- Treating an error message as a reason to panic instead of information.
+- Running several commands before checking the result of the first one.
+- Using a destructive option because a random tutorial recommended it.
+- Declaring success because a command returned without an error.
+
+#### Verification checklist
+
+- [ ] I know what state I started in.
+- [ ] I know what I intended to change.
+- [ ] I can explain what the operation changed.
+- [ ] I checked the resulting Git state.
+- [ ] I checked the actual project result when relevant.
+- [ ] I can explain what I would do if the result were unexpected.
+
+
+Shows repository state, including branch and reported changes.
 
 ## Common mistakes and troubleshooting
 
@@ -841,7 +894,7 @@ Inspects a commit and its associated changes.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
 In this section, treat **Running commands in the wrong folder** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -894,7 +947,7 @@ Use `pwd`, `ls`, and `git status` before changing repository configuration.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
 In this section, treat **Acting before checking state** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -947,7 +1000,7 @@ Stop and inspect status. Git usually gives you enough information to decide the 
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
 In this section, treat **Copying a command without understanding it** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1000,7 +1053,7 @@ Use the documentation habit from Lesson 02. Understand what the command changes 
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
 In this section, treat **Assuming success means correctness** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1053,7 +1106,7 @@ A command can succeed while the project remains logically wrong. Test and inspec
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
 In this section, treat **Using a destructive operation casually** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1106,7 +1159,7 @@ Preserve important work and understand what will be discarded or rewritten befor
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
 In this section, treat **Forgetting the current branch** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1159,7 +1212,7 @@ Run `git branch` or `git status` before branch-sensitive operations.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Recovery starts by classifying the mistake. Different repository states require different kinds of undo.
 
 In this section, treat **Ignoring Git output** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1210,17 +1263,17 @@ Git often tells you exactly what happened or what it expects next. Read the comp
 
 ## What you should be able to explain
 
-- [ ] I can explain **git log** in my own words.
-- [ ] I can explain **compact history** in my own words.
-- [ ] I can explain **commit identifiers** in my own words.
-- [ ] I can explain **authors and dates** in my own words.
-- [ ] I can explain **git show** in my own words.
-- [ ] I can explain **history as a story** in my own words.
-- [ ] I can explain **history during debugging** in my own words.
+- [ ] I can explain **working-tree mistakes** in my own words.
+- [ ] I can explain **unstaging** in my own words.
+- [ ] I can explain **restore** in my own words.
+- [ ] I can explain **amend** in my own words.
+- [ ] I can explain **shared history** in my own words.
+- [ ] I can explain **destructive operations** in my own words.
+- [ ] I can explain **verification** in my own words.
 
 ## Mastery checkpoint
 
-You should be able to complete the reading your project’s history practice drills without being given a command-by-command recipe. If you forget a command, use documentation and your understanding of repository state to find it.
+You should be able to complete the undoing everyday mistakes practice drills without being given a command-by-command recipe. If you forget a command, use documentation and your understanding of repository state to find it.
 
 ## Learning a command instead of memorising a command
 

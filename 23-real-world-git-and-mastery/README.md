@@ -1,28 +1,29 @@
-# 07 — Reading Your Project’s History
+# 23 — Real-World Git, Debugging & Mastery
 
 ## Mission
 
-Learn to use history as evidence rather than merely looking at a list of commits.
+Integrate the entire course through unfamiliar repositories, documentation, debugging, release markers, collaboration, recovery, and independent work.
 
 ## Learning outcomes
 
-- git log
-- compact history
-- commit identifiers
-- authors and dates
-- git show
-- history as a story
-- history during debugging
+- unfamiliar repositories
+- documentation missions
+- Git debugging
+- history and diff investigation
+- tags and releases
+- collaboration
+- recovery
+- final mastery
 
 ## The mental model
 
-Before learning the commands for **Reading Your Project’s History**, understand the problem they solve. Git operations are safest when you can describe the current state and the desired state in ordinary language first.
+Before learning the commands for **Real-World Git, Debugging & Mastery**, understand the problem they solve. Git operations are safest when you can describe the current state and the desired state in ordinary language first.
 
 ### The core loop
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
 In this section, treat **The core loop** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -93,7 +94,7 @@ STOP → INSPECT → UNDERSTAND → RECOVER → VERIFY
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
 In this section, treat **What you should already know** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -140,17 +141,17 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-- Lesson 06: how commits are created and verified.
+- Everything before this lesson.
 
 ## Detailed teaching guide
 
-### 1. Why history matters
+### 1. Enter an unfamiliar repository
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **1. Why history matters** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **1. Enter an unfamiliar repository** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -163,7 +164,7 @@ In this section, treat **1. Why history matters** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **1. why history matters**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **1. enter an unfamiliar repository**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -195,15 +196,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-History lets you investigate how a project arrived at its current state. It can answer questions about changes, authorship, timing, and intent.
+Start with location, README, status, branch, remote, and recent history before editing.
 
-### 2. Read the full log
+### 2. Documentation-driven setup
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **2. Read the full log** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **2. Documentation-driven setup** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -216,7 +217,7 @@ In this section, treat **2. Read the full log** as a real situation rather than 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **2. read the full log**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **2. documentation-driven setup**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -248,15 +249,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git log` contains more metadata than the compact view. Read it slowly: author, date, commit identifier, message, and the relationship to earlier history.
+Use the official documentation workflow from Lesson 02 whenever a project requires software or configuration you do not have.
 
-### 3. Use compact history
+### 3. Git debugging
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **3. Use compact history** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **3. Git debugging** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -269,7 +270,7 @@ In this section, treat **3. Use compact history** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **3. use compact history**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **3. git debugging**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -301,15 +302,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git log --oneline` is a useful table of contents. It gives you a quick sequence of commit identifiers and messages before you inspect individual commits.
+Use status, history, diff, and targeted commit inspection to narrow a Git-related investigation. Git provides evidence; application tests establish behavior.
 
-### 4. Understand commit identifiers
+### 4. History as evidence
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **4. Understand commit identifiers** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **4. History as evidence** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -322,7 +323,7 @@ In this section, treat **4. Understand commit identifiers** as a real situation 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **4. understand commit identifiers**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **4. history as evidence**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -354,15 +355,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Commit identifiers distinguish recorded commits. Short identifiers are convenient displays; Git uses the underlying identifier to identify a precise commit.
+Use history to identify when a relevant change happened and inspect the actual change rather than relying on a message.
 
-### 5. Inspect one commit
+### 5. Diff-based review
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **5. Inspect one commit** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **5. Diff-based review** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -375,7 +376,7 @@ In this section, treat **5. Inspect one commit** as a real situation rather than
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **5. inspect one commit**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **5. diff-based review**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -407,15 +408,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git show <commit>` lets you inspect a commit and its changes. Use it when history tells you a commit may be relevant and you need evidence about what it actually changed.
+Use diffs to verify what a feature actually changed before sharing or committing it.
 
-### 6. Read metadata
+### 6. Tags and releases
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **6. Read metadata** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **6. Tags and releases** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -428,7 +429,7 @@ In this section, treat **6. Read metadata** as a real situation rather than a co
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **6. read metadata**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **6. tags and releases**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -460,15 +461,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Author, date, message, and identifier provide context. None of them alone proves that a change is correct; combine history with actual diff and testing evidence.
+A tag gives a name to a particular point in history. A branch normally moves; a release tag normally identifies a milestone. Hosting platforms can add release features around tags.
 
-### 7. Reconstruct a story
+### 7. Real-world workflow
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **7. Reconstruct a story** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **7. Real-world workflow** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -481,7 +482,7 @@ In this section, treat **7. Reconstruct a story** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **7. reconstruct a story**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **7. real-world workflow**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -513,15 +514,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Read commits as a development sequence. Good commit messages make the story easier to understand, but the actual changes remain the strongest evidence.
+A typical workflow is inspect → branch → work → review → commit → test → push → review/merge, but team policy determines the exact sequence.
 
-### 8. History as debugging evidence
+### 8. Collaboration
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **8. History as debugging evidence** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **8. Collaboration** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -534,7 +535,7 @@ In this section, treat **8. History as debugging evidence** as a real situation 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **8. history as debugging evidence**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **8. collaboration**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -566,15 +567,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-When a feature worked before and is broken now, narrow the investigation using recent commits, affected files, and diffs. History helps you find candidate changes; it does not automatically diagnose the bug.
+Real work requires readable commits, review, synchronisation, and communication as well as commands.
 
-### 9. History versus current files
+### 9. Recovery under pressure
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **9. History versus current files** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **9. Recovery under pressure** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -587,7 +588,7 @@ In this section, treat **9. History versus current files** as a real situation r
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **9. history versus current files**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **9. recovery under pressure**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -619,15 +620,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-The current working tree is today's state. A historical commit is an earlier recorded state. Inspecting the past does not mean you are changing the present.
+When something goes wrong, stop and preserve evidence before making more changes.
 
-### 10. Do not blindly trust commit messages
+### 10. Learning forgotten commands
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **10. Do not blindly trust commit messages** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **10. Learning forgotten commands** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -640,7 +641,7 @@ In this section, treat **10. Do not blindly trust commit messages** as a real si
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **10. do not blindly trust commit messages**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **10. learning forgotten commands**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -672,17 +673,123 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-A commit message is a human description. Verify its claim against the actual changes with `git show` or a diff.
+Use `git <command> --help`, official Git documentation, and the repository's own documentation. The ability to look up syntax safely is part of mastery.
+
+### 11. Team workflow differences
+
+#### Why this matters
+
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
+
+In this section, treat **11. Team workflow differences** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+
+#### Step-by-step thinking
+
+1. **Describe the goal in plain language.** Do not start with a command.
+2. **Inspect the current state.** Use the information Git already provides.
+3. **Predict the result.** Write down what you expect to happen.
+4. **Perform the smallest appropriate operation.** Avoid unrelated changes.
+5. **Read Git's output.** It often tells you what happened or what is required next.
+6. **Verify the result.** Check the repository state, files, history, or project behavior as appropriate.
+
+#### Example situation
+
+Imagine a teammate asks you to deal with a problem involving **11. team workflow differences**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+
+A useful written plan is:
+
+```text
+Goal:
+Current state:
+Evidence I have:
+Operation I am considering:
+What I expect:
+How I will verify:
+```
+
+#### What beginners often get wrong
+
+- Starting with a command instead of a goal.
+- Assuming the current branch or repository location.
+- Treating an error message as a reason to panic instead of information.
+- Running several commands before checking the result of the first one.
+- Using a destructive option because a random tutorial recommended it.
+- Declaring success because a command returned without an error.
+
+#### Verification checklist
+
+- [ ] I know what state I started in.
+- [ ] I know what I intended to change.
+- [ ] I can explain what the operation changed.
+- [ ] I checked the resulting Git state.
+- [ ] I checked the actual project result when relevant.
+- [ ] I can explain what I would do if the result were unexpected.
+
+
+Teams can legitimately use different branch, merge, rebase, release, and review strategies. Learn the local rules instead of assuming one universal workflow.
+
+### 12. The final standard
+
+#### Why this matters
+
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
+
+In this section, treat **12. The final standard** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+
+#### Step-by-step thinking
+
+1. **Describe the goal in plain language.** Do not start with a command.
+2. **Inspect the current state.** Use the information Git already provides.
+3. **Predict the result.** Write down what you expect to happen.
+4. **Perform the smallest appropriate operation.** Avoid unrelated changes.
+5. **Read Git's output.** It often tells you what happened or what is required next.
+6. **Verify the result.** Check the repository state, files, history, or project behavior as appropriate.
+
+#### Example situation
+
+Imagine a teammate asks you to deal with a problem involving **12. the final standard**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+
+A useful written plan is:
+
+```text
+Goal:
+Current state:
+Evidence I have:
+Operation I am considering:
+What I expect:
+How I will verify:
+```
+
+#### What beginners often get wrong
+
+- Starting with a command instead of a goal.
+- Assuming the current branch or repository location.
+- Treating an error message as a reason to panic instead of information.
+- Running several commands before checking the result of the first one.
+- Using a destructive option because a random tutorial recommended it.
+- Declaring success because a command returned without an error.
+
+#### Verification checklist
+
+- [ ] I know what state I started in.
+- [ ] I know what I intended to change.
+- [ ] I can explain what the operation changed.
+- [ ] I checked the resulting Git state.
+- [ ] I checked the actual project result when relevant.
+- [ ] I can explain what I would do if the result were unexpected.
+
+
+Mastery means independent investigation and verification, not command recitation.
 
 ## Command reference
 
-### `git log`
+### `git status`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **`git log`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git status`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -695,7 +802,7 @@ In this section, treat **`git log`** as a real situation rather than a command t
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git log`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git status`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -727,15 +834,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Shows commit history.
+Shows repository state, including branch and reported changes.
 
-### `git log --oneline`
+### `git log --oneline --graph --decorate --all`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **`git log --oneline`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git log --oneline --graph --decorate --all`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -748,7 +855,7 @@ In this section, treat **`git log --oneline`** as a real situation rather than a
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git log --oneline`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git log --oneline --graph --decorate --all`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -780,15 +887,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Shows a compact commit history.
+Shows a compact visual branch/history graph.
 
-### `git show <commit>`
+### `git diff`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
-In this section, treat **`git show <commit>`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git diff`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -801,7 +908,7 @@ In this section, treat **`git show <commit>`** as a real situation rather than a
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git show <commit>`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git diff`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -833,7 +940,272 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Inspects a commit and its associated changes.
+Shows unstaged differences in the working-tree comparison.
+
+### `git fetch`
+
+#### Why this matters
+
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
+
+In this section, treat **`git fetch`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+
+#### Step-by-step thinking
+
+1. **Describe the goal in plain language.** Do not start with a command.
+2. **Inspect the current state.** Use the information Git already provides.
+3. **Predict the result.** Write down what you expect to happen.
+4. **Perform the smallest appropriate operation.** Avoid unrelated changes.
+5. **Read Git's output.** It often tells you what happened or what is required next.
+6. **Verify the result.** Check the repository state, files, history, or project behavior as appropriate.
+
+#### Example situation
+
+Imagine a teammate asks you to deal with a problem involving **`git fetch`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+
+A useful written plan is:
+
+```text
+Goal:
+Current state:
+Evidence I have:
+Operation I am considering:
+What I expect:
+How I will verify:
+```
+
+#### What beginners often get wrong
+
+- Starting with a command instead of a goal.
+- Assuming the current branch or repository location.
+- Treating an error message as a reason to panic instead of information.
+- Running several commands before checking the result of the first one.
+- Using a destructive option because a random tutorial recommended it.
+- Declaring success because a command returned without an error.
+
+#### Verification checklist
+
+- [ ] I know what state I started in.
+- [ ] I know what I intended to change.
+- [ ] I can explain what the operation changed.
+- [ ] I checked the resulting Git state.
+- [ ] I checked the actual project result when relevant.
+- [ ] I can explain what I would do if the result were unexpected.
+
+
+Retrieves remote information without automatically integrating it into the current branch.
+
+### `git push`
+
+#### Why this matters
+
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
+
+In this section, treat **`git push`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+
+#### Step-by-step thinking
+
+1. **Describe the goal in plain language.** Do not start with a command.
+2. **Inspect the current state.** Use the information Git already provides.
+3. **Predict the result.** Write down what you expect to happen.
+4. **Perform the smallest appropriate operation.** Avoid unrelated changes.
+5. **Read Git's output.** It often tells you what happened or what is required next.
+6. **Verify the result.** Check the repository state, files, history, or project behavior as appropriate.
+
+#### Example situation
+
+Imagine a teammate asks you to deal with a problem involving **`git push`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+
+A useful written plan is:
+
+```text
+Goal:
+Current state:
+Evidence I have:
+Operation I am considering:
+What I expect:
+How I will verify:
+```
+
+#### What beginners often get wrong
+
+- Starting with a command instead of a goal.
+- Assuming the current branch or repository location.
+- Treating an error message as a reason to panic instead of information.
+- Running several commands before checking the result of the first one.
+- Using a destructive option because a random tutorial recommended it.
+- Declaring success because a command returned without an error.
+
+#### Verification checklist
+
+- [ ] I know what state I started in.
+- [ ] I know what I intended to change.
+- [ ] I can explain what the operation changed.
+- [ ] I checked the resulting Git state.
+- [ ] I checked the actual project result when relevant.
+- [ ] I can explain what I would do if the result were unexpected.
+
+
+Sends committed local history to a remote.
+
+### `git tag`
+
+#### Why this matters
+
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
+
+In this section, treat **`git tag`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+
+#### Step-by-step thinking
+
+1. **Describe the goal in plain language.** Do not start with a command.
+2. **Inspect the current state.** Use the information Git already provides.
+3. **Predict the result.** Write down what you expect to happen.
+4. **Perform the smallest appropriate operation.** Avoid unrelated changes.
+5. **Read Git's output.** It often tells you what happened or what is required next.
+6. **Verify the result.** Check the repository state, files, history, or project behavior as appropriate.
+
+#### Example situation
+
+Imagine a teammate asks you to deal with a problem involving **`git tag`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+
+A useful written plan is:
+
+```text
+Goal:
+Current state:
+Evidence I have:
+Operation I am considering:
+What I expect:
+How I will verify:
+```
+
+#### What beginners often get wrong
+
+- Starting with a command instead of a goal.
+- Assuming the current branch or repository location.
+- Treating an error message as a reason to panic instead of information.
+- Running several commands before checking the result of the first one.
+- Using a destructive option because a random tutorial recommended it.
+- Declaring success because a command returned without an error.
+
+#### Verification checklist
+
+- [ ] I know what state I started in.
+- [ ] I know what I intended to change.
+- [ ] I can explain what the operation changed.
+- [ ] I checked the resulting Git state.
+- [ ] I checked the actual project result when relevant.
+- [ ] I can explain what I would do if the result were unexpected.
+
+
+Creates a tag when supplied with a tag name.
+
+### `git tag --list`
+
+#### Why this matters
+
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
+
+In this section, treat **`git tag --list`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+
+#### Step-by-step thinking
+
+1. **Describe the goal in plain language.** Do not start with a command.
+2. **Inspect the current state.** Use the information Git already provides.
+3. **Predict the result.** Write down what you expect to happen.
+4. **Perform the smallest appropriate operation.** Avoid unrelated changes.
+5. **Read Git's output.** It often tells you what happened or what is required next.
+6. **Verify the result.** Check the repository state, files, history, or project behavior as appropriate.
+
+#### Example situation
+
+Imagine a teammate asks you to deal with a problem involving **`git tag --list`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+
+A useful written plan is:
+
+```text
+Goal:
+Current state:
+Evidence I have:
+Operation I am considering:
+What I expect:
+How I will verify:
+```
+
+#### What beginners often get wrong
+
+- Starting with a command instead of a goal.
+- Assuming the current branch or repository location.
+- Treating an error message as a reason to panic instead of information.
+- Running several commands before checking the result of the first one.
+- Using a destructive option because a random tutorial recommended it.
+- Declaring success because a command returned without an error.
+
+#### Verification checklist
+
+- [ ] I know what state I started in.
+- [ ] I know what I intended to change.
+- [ ] I can explain what the operation changed.
+- [ ] I checked the resulting Git state.
+- [ ] I checked the actual project result when relevant.
+- [ ] I can explain what I would do if the result were unexpected.
+
+
+Lists tags.
+
+### `git <command> --help`
+
+#### Why this matters
+
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
+
+In this section, treat **`git <command> --help`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+
+#### Step-by-step thinking
+
+1. **Describe the goal in plain language.** Do not start with a command.
+2. **Inspect the current state.** Use the information Git already provides.
+3. **Predict the result.** Write down what you expect to happen.
+4. **Perform the smallest appropriate operation.** Avoid unrelated changes.
+5. **Read Git's output.** It often tells you what happened or what is required next.
+6. **Verify the result.** Check the repository state, files, history, or project behavior as appropriate.
+
+#### Example situation
+
+Imagine a teammate asks you to deal with a problem involving **`git <command> --help`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+
+A useful written plan is:
+
+```text
+Goal:
+Current state:
+Evidence I have:
+Operation I am considering:
+What I expect:
+How I will verify:
+```
+
+#### What beginners often get wrong
+
+- Starting with a command instead of a goal.
+- Assuming the current branch or repository location.
+- Treating an error message as a reason to panic instead of information.
+- Running several commands before checking the result of the first one.
+- Using a destructive option because a random tutorial recommended it.
+- Declaring success because a command returned without an error.
+
+#### Verification checklist
+
+- [ ] I know what state I started in.
+- [ ] I know what I intended to change.
+- [ ] I can explain what the operation changed.
+- [ ] I checked the resulting Git state.
+- [ ] I checked the actual project result when relevant.
+- [ ] I can explain what I would do if the result were unexpected.
+
+
+Displays built-in help for many Git commands.
 
 ## Common mistakes and troubleshooting
 
@@ -841,7 +1213,7 @@ Inspects a commit and its associated changes.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
 In this section, treat **Running commands in the wrong folder** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -894,7 +1266,7 @@ Use `pwd`, `ls`, and `git status` before changing repository configuration.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
 In this section, treat **Acting before checking state** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -947,7 +1319,7 @@ Stop and inspect status. Git usually gives you enough information to decide the 
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
 In this section, treat **Copying a command without understanding it** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1000,7 +1372,7 @@ Use the documentation habit from Lesson 02. Understand what the command changes 
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
 In this section, treat **Assuming success means correctness** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1053,7 +1425,7 @@ A command can succeed while the project remains logically wrong. Test and inspec
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
 In this section, treat **Using a destructive operation casually** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1106,7 +1478,7 @@ Preserve important work and understand what will be discarded or rewritten befor
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
 In this section, treat **Forgetting the current branch** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1159,7 +1531,7 @@ Run `git branch` or `git status` before branch-sensitive operations.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+The final skill is independent decision-making: investigate, choose, act, verify, and recover.
 
 In this section, treat **Ignoring Git output** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1210,17 +1582,18 @@ Git often tells you exactly what happened or what it expects next. Read the comp
 
 ## What you should be able to explain
 
-- [ ] I can explain **git log** in my own words.
-- [ ] I can explain **compact history** in my own words.
-- [ ] I can explain **commit identifiers** in my own words.
-- [ ] I can explain **authors and dates** in my own words.
-- [ ] I can explain **git show** in my own words.
-- [ ] I can explain **history as a story** in my own words.
-- [ ] I can explain **history during debugging** in my own words.
+- [ ] I can explain **unfamiliar repositories** in my own words.
+- [ ] I can explain **documentation missions** in my own words.
+- [ ] I can explain **Git debugging** in my own words.
+- [ ] I can explain **history and diff investigation** in my own words.
+- [ ] I can explain **tags and releases** in my own words.
+- [ ] I can explain **collaboration** in my own words.
+- [ ] I can explain **recovery** in my own words.
+- [ ] I can explain **final mastery** in my own words.
 
 ## Mastery checkpoint
 
-You should be able to complete the reading your project’s history practice drills without being given a command-by-command recipe. If you forget a command, use documentation and your understanding of repository state to find it.
+You should be able to complete the real-world git, debugging & mastery practice drills without being given a command-by-command recipe. If you forget a command, use documentation and your understanding of repository state to find it.
 
 ## Learning a command instead of memorising a command
 
@@ -1281,3 +1654,43 @@ Never turn a practice exercise into an experiment on an important production rep
 Explain this lesson to someone who has never used Git. Do not begin with commands. Begin with the problem Git is solving. Then explain the mental model, the normal workflow, the common mistake, and the verification step.
 
 If you can explain the concept clearly without relying on command names, you understand it better than if you can merely type the command.
+
+
+# Official Final Assessment — PaakowTronics Service Desk
+
+Lesson 23 prepares you for the course's final practical assessment. The assessment is deliberately separate from the lesson exercises so that you can demonstrate what you can do without being walked through every command.
+
+## The assessment repository
+
+Use the official **PaakowTronics Service Desk Final Mastery** repository:
+
+**https://github.com/PaakowTronics/paakowtronics-service-desk-final-mastery**
+
+It was created specifically for learners who have studied **Git Essentials**. The repository contains a realistic Service Desk scenario, existing history, multiple branches, documentation, a prepared integration problem, remote-tracking information, and an instructor-controlled recovery exercise.
+
+## What to do
+
+1. Open the repository and read its `README.md`.
+2. Read `FINAL-MASTERY-CHALLENGE.md`.
+3. Follow the documented setup process.
+4. Work through the challenge without asking for a command-by-command recipe.
+5. Use Git documentation and the repository documentation when you need information.
+6. Inspect and verify your work throughout the assessment.
+
+The goal is not to remember every Git command. The goal is to demonstrate that you can **investigate a real repository, make reasoned decisions, perform Git operations, recover from mistakes, and prove the final state is correct.**
+
+## The handoff from the course to the assessment
+
+```text
+Lessons 01–22
+      ↓
+Lesson 23: independent investigation
+      ↓
+Official Final Mastery repository
+      ↓
+Realistic Service Desk scenario
+      ↓
+Solve → Verify → Recover → Explain
+```
+
+When you reach the assessment, resist the temptation to search for a command first. Start by reading the repository's instructions and determining the state you have been given.

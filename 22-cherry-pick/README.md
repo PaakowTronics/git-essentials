@@ -1,28 +1,28 @@
-# 07 — Reading Your Project’s History
+# 22 — Cherry-Pick: Bringing One Commit Across
 
 ## Mission
 
-Learn to use history as evidence rather than merely looking at a list of commits.
+Select one commit and apply its change to another branch deliberately.
 
 ## Learning outcomes
 
-- git log
-- compact history
-- commit identifiers
-- authors and dates
-- git show
-- history as a story
-- history during debugging
+- specific commit selection
+- target branch
+- cherry-pick
+- new commit identity
+- conflicts
+- verification
+- merge versus cherry-pick
 
 ## The mental model
 
-Before learning the commands for **Reading Your Project’s History**, understand the problem they solve. Git operations are safest when you can describe the current state and the desired state in ordinary language first.
+Before learning the commands for **Cherry-Pick: Bringing One Commit Across**, understand the problem they solve. Git operations are safest when you can describe the current state and the desired state in ordinary language first.
 
 ### The core loop
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
 In this section, treat **The core loop** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -93,7 +93,7 @@ STOP → INSPECT → UNDERSTAND → RECOVER → VERIFY
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
 In this section, treat **What you should already know** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -140,17 +140,17 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-- Lesson 06: how commits are created and verified.
+- Lessons 07, 11, and 17: history, integration, and conflicts.
 
 ## Detailed teaching guide
 
-### 1. Why history matters
+### 1. The one-commit problem
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **1. Why history matters** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **1. The one-commit problem** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -163,7 +163,7 @@ In this section, treat **1. Why history matters** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **1. why history matters**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **1. the one-commit problem**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -195,15 +195,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-History lets you investigate how a project arrived at its current state. It can answer questions about changes, authorship, timing, and intent.
+Sometimes a complete branch contains one fix you need elsewhere. Cherry-pick lets you select that specific commit.
 
-### 2. Read the full log
+### 2. Identify the commit
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **2. Read the full log** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **2. Identify the commit** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -216,7 +216,7 @@ In this section, treat **2. Read the full log** as a real situation rather than 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **2. read the full log**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **2. identify the commit**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -248,15 +248,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git log` contains more metadata than the compact view. Read it slowly: author, date, commit identifier, message, and the relationship to earlier history.
+Use history to identify the exact commit containing the desired change. Inspect it before applying it elsewhere.
 
-### 3. Use compact history
+### 3. Verify target branch
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **3. Use compact history** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **3. Verify target branch** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -269,7 +269,7 @@ In this section, treat **3. Use compact history** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **3. use compact history**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **3. verify target branch**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -301,15 +301,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git log --oneline` is a useful table of contents. It gives you a quick sequence of commit identifiers and messages before you inspect individual commits.
+Cherry-pick applies to the branch you are currently on. Confirm the target before running it.
 
-### 4. Understand commit identifiers
+### 4. Cherry-pick
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **4. Understand commit identifiers** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **4. Cherry-pick** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -322,7 +322,7 @@ In this section, treat **4. Understand commit identifiers** as a real situation 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **4. understand commit identifiers**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **4. cherry-pick**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -354,15 +354,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Commit identifiers distinguish recorded commits. Short identifiers are convenient displays; Git uses the underlying identifier to identify a precise commit.
+`git cherry-pick <commit>` applies the selected commit's changes to the current branch, normally creating a new commit.
 
-### 5. Inspect one commit
+### 5. New history identity
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **5. Inspect one commit** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **5. New history identity** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -375,7 +375,7 @@ In this section, treat **5. Inspect one commit** as a real situation rather than
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **5. inspect one commit**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **5. new history identity**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -407,15 +407,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-`git show <commit>` lets you inspect a commit and its changes. Use it when history tells you a commit may be relevant and you need evidence about what it actually changed.
+The resulting commit normally has a new identifier because it is a new commit in the target history.
 
-### 6. Read metadata
+### 6. Selective transfer
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **6. Read metadata** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **6. Selective transfer** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -428,7 +428,7 @@ In this section, treat **6. Read metadata** as a real situation rather than a co
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **6. read metadata**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **6. selective transfer**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -460,15 +460,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Author, date, message, and identifier provide context. None of them alone proves that a change is correct; combine history with actual diff and testing evidence.
+Cherry-pick is useful when you want one isolated change rather than the entire source branch.
 
-### 7. Reconstruct a story
+### 7. Conflicts
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **7. Reconstruct a story** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **7. Conflicts** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -481,7 +481,7 @@ In this section, treat **7. Reconstruct a story** as a real situation rather tha
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **7. reconstruct a story**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **7. conflicts**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -513,15 +513,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Read commits as a development sequence. Good commit messages make the story easier to understand, but the actual changes remain the strongest evidence.
+A selected commit may conflict with the target branch. Use the conflict workflow from Lesson 17.
 
-### 8. History as debugging evidence
+### 8. Verification
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **8. History as debugging evidence** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **8. Verification** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -534,7 +534,7 @@ In this section, treat **8. History as debugging evidence** as a real situation 
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **8. history as debugging evidence**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **8. verification**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -566,15 +566,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-When a feature worked before and is broken now, narrow the investigation using recent commits, affected files, and diffs. History helps you find candidate changes; it does not automatically diagnose the bug.
+Inspect status, history, actual files, and tests after cherry-picking.
 
-### 9. History versus current files
+### 9. Merge versus cherry-pick
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **9. History versus current files** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **9. Merge versus cherry-pick** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -587,7 +587,7 @@ In this section, treat **9. History versus current files** as a real situation r
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **9. history versus current files**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **9. merge versus cherry-pick**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -619,15 +619,15 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-The current working tree is today's state. A historical commit is an earlier recorded state. Inspecting the past does not mean you are changing the present.
+Ask whether you want the entire development line or one particular change. That often determines whether merge or cherry-pick is appropriate.
 
-### 10. Do not blindly trust commit messages
+### 10. Duplicate logical changes
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **10. Do not blindly trust commit messages** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **10. Duplicate logical changes** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -640,7 +640,7 @@ In this section, treat **10. Do not blindly trust commit messages** as a real si
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **10. do not blindly trust commit messages**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **10. duplicate logical changes**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -672,17 +672,17 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-A commit message is a human description. Verify its claim against the actual changes with `git show` or a diff.
+Applying the same logical change through multiple routes can make history confusing. Investigate before applying another copy.
 
 ## Command reference
 
-### `git log`
+### `git cherry-pick <commit>`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **`git log`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git cherry-pick <commit>`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -695,7 +695,7 @@ In this section, treat **`git log`** as a real situation rather than a command t
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git log`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git cherry-pick <commit>`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -727,13 +727,13 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Shows commit history.
+Applies a specific commit to the current branch.
 
 ### `git log --oneline`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
 In this section, treat **`git log --oneline`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -782,13 +782,13 @@ How I will verify:
 
 Shows a compact commit history.
 
-### `git show <commit>`
+### `git status`
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
-In this section, treat **`git show <commit>`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
+In this section, treat **`git status`** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
 #### Step-by-step thinking
 
@@ -801,7 +801,7 @@ In this section, treat **`git show <commit>`** as a real situation rather than a
 
 #### Example situation
 
-Imagine a teammate asks you to deal with a problem involving **`git show <commit>`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
+Imagine a teammate asks you to deal with a problem involving **`git status`**. You have not been given a command recipe. Your first response should be investigation: determine the current state, identify the desired state, and find the relevant documentation if you need syntax or options.
 
 A useful written plan is:
 
@@ -833,7 +833,7 @@ How I will verify:
 - [ ] I can explain what I would do if the result were unexpected.
 
 
-Inspects a commit and its associated changes.
+Shows repository state, including branch and reported changes.
 
 ## Common mistakes and troubleshooting
 
@@ -841,7 +841,7 @@ Inspects a commit and its associated changes.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
 In this section, treat **Running commands in the wrong folder** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -894,7 +894,7 @@ Use `pwd`, `ls`, and `git status` before changing repository configuration.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
 In this section, treat **Acting before checking state** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -947,7 +947,7 @@ Stop and inspect status. Git usually gives you enough information to decide the 
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
 In this section, treat **Copying a command without understanding it** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1000,7 +1000,7 @@ Use the documentation habit from Lesson 02. Understand what the command changes 
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
 In this section, treat **Assuming success means correctness** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1053,7 +1053,7 @@ A command can succeed while the project remains logically wrong. Test and inspec
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
 In this section, treat **Using a destructive operation casually** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1106,7 +1106,7 @@ Preserve important work and understand what will be discarded or rewritten befor
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
 In this section, treat **Forgetting the current branch** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1159,7 +1159,7 @@ Run `git branch` or `git status` before branch-sensitive operations.
 
 #### Why this matters
 
-History is evidence. Use it to answer questions about how the project reached its current state.
+Cherry-pick is precise because it selects one commit. Precision still requires verification and awareness of history.
 
 In this section, treat **Ignoring Git output** as a real situation rather than a command to memorise. Ask what problem exists, what information Git already has, what you want to change, and how you will prove the result.
 
@@ -1210,17 +1210,17 @@ Git often tells you exactly what happened or what it expects next. Read the comp
 
 ## What you should be able to explain
 
-- [ ] I can explain **git log** in my own words.
-- [ ] I can explain **compact history** in my own words.
-- [ ] I can explain **commit identifiers** in my own words.
-- [ ] I can explain **authors and dates** in my own words.
-- [ ] I can explain **git show** in my own words.
-- [ ] I can explain **history as a story** in my own words.
-- [ ] I can explain **history during debugging** in my own words.
+- [ ] I can explain **specific commit selection** in my own words.
+- [ ] I can explain **target branch** in my own words.
+- [ ] I can explain **cherry-pick** in my own words.
+- [ ] I can explain **new commit identity** in my own words.
+- [ ] I can explain **conflicts** in my own words.
+- [ ] I can explain **verification** in my own words.
+- [ ] I can explain **merge versus cherry-pick** in my own words.
 
 ## Mastery checkpoint
 
-You should be able to complete the reading your project’s history practice drills without being given a command-by-command recipe. If you forget a command, use documentation and your understanding of repository state to find it.
+You should be able to complete the cherry-pick: bringing one commit across practice drills without being given a command-by-command recipe. If you forget a command, use documentation and your understanding of repository state to find it.
 
 ## Learning a command instead of memorising a command
 

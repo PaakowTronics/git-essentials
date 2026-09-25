@@ -1,40 +1,115 @@
-# Git Essentials — Professional Hands-On Course
+# Git Essentials
 
-This is the expanded professional-training version of Git Essentials.
+A hands-on, beginner-first Git course designed to take a learner from terminal basics to independent Git use.
 
-## Course promise
+## Core philosophy
 
-By completion, the learner should be able to enter an unfamiliar Linux terminal, read documentation, install and verify software, understand Git repository state, work with GitHub, collaborate, recover from mistakes, troubleshoot, and solve unfamiliar Git problems without relying on command recipes.
+The course teaches a way of thinking, not command memorisation:
 
-## Lesson pattern
+**Understand → See → Predict → Try → Verify → Break → Fix → Explain**
 
-Each lesson contains:
+The learner should eventually be able to enter an unfamiliar repository, determine its state, read documentation, choose an appropriate Git operation, recover from mistakes, and verify the result without needing a command-by-command recipe.
 
-1. Mission
-2. Learning outcomes
-3. Mental model
-4. Guided demonstration
-5. Practice drills
-6. Prediction drill
-7. Break-It lab where safe
-8. Recovery lab
-9. Independent challenge
-10. Assignment
-11. Answer/check guidance
-12. Mastery checkpoint
-13. Instructor notes
+## Lesson format
 
-## Lab philosophy
+Every lesson contains exactly two learner-facing files:
 
-Labs verify **outcomes**, not whether the learner typed one specific command.
+```text
+lesson-name/
+├── README.md
+└── practice-drills.md
+```
 
-Learners are encouraged to use official documentation and `git help` rather than being trained to memorize everything.
+`README.md` contains the detailed teaching material. `practice-drills.md` contains prediction drills, hands-on missions, break-it exercises, troubleshooting, independent challenges, and mastery checks.
 
-## Levels
+There are no separate LAB, CHECKLIST, ANSWER-GUIDANCE, or instructor files inside the lessons.
 
-- Foundation: 01–04
-- Core Git: 05–09
-- GitHub & collaboration: 10–13
-- Recovery & advanced control: 14–18
-- Professional workflows: 19–22
-- Final mastery: 23
+## Curriculum
+
+### Foundation
+1. **Your Terminal: Starting From Zero**
+2. **Documentation: Learning How to Figure Things Out**
+3. **What Is Git?**
+4. **Your First Git Repository**
+
+### Git's Core Model
+5. **What Does Git See?**
+6. **Staging & Committing: Choosing What to Record**
+7. **Reading Your Project's History**
+8. **Comparing Versions: Finding Exactly What Changed**
+
+### Branching
+9. **Why Branches Exist**
+10. **Working With Branches**
+11. **Bringing Work Together: Merging**
+
+### GitHub & Collaboration
+12. **GitHub: Putting Your Repository Online**
+13. **Push: Sending Your Work to GitHub**
+14. **Clone: Bringing a Repository to Your Computer**
+15. **Fetch & Pull: Keeping Your Local Work Up to Date**
+16. **Working With Other People**
+
+### Problems & Recovery
+17. **Merge Conflicts: When Git Needs Your Help**
+18. **Undoing Everyday Mistakes**
+19. **Git Rescue: Recovery & Reflog**
+
+### Advanced Git
+20. **Stash: Putting Work Aside Temporarily**
+21. **Rebase: Replaying Work on a New Base**
+22. **Cherry-Pick: Bringing One Commit Across**
+
+### Independence & Mastery
+23. **Real-World Git, Debugging & Mastery**
+
+Lesson 23 also integrates the original course topics of Git debugging, real-world workflows, tags/releases, documentation missions, and the final mastery challenge.
+
+## Progression
+
+```text
+Terminal confidence
+      ↓
+Documentation independence
+      ↓
+Git mental model
+      ↓
+First repository
+      ↓
+Repository state
+      ↓
+Staging and commits
+      ↓
+History and comparison
+      ↓
+Branches
+      ↓
+Merging
+      ↓
+GitHub
+      ↓
+Push / clone / fetch / pull
+      ↓
+Collaboration
+      ↓
+Conflicts and recovery
+      ↓
+Advanced history operations
+      ↓
+Real-world independent work
+```
+
+## The habit that matters most
+
+When you forget a command, do not guess. Ask:
+
+1. What am I trying to accomplish?
+2. What is the repository's current state?
+3. What evidence do I have?
+4. What does the official documentation say?
+5. What could this operation change?
+6. How will I verify the result?
+
+**If I forget the command tomorrow, do I know how to figure out what I need to do?**
+
+That is the skill this course is building.
