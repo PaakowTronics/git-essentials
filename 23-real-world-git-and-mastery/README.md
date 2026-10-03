@@ -1658,7 +1658,7 @@ If you can explain the concept clearly without relying on command names, you und
 
 # Official Final Assessment — PaakowTronics Service Desk
 
-Lesson 23 prepares you for the course's final practical assessment. The assessment is deliberately separate from the lesson exercises so that you can demonstrate what you can do without being walked through every command.
+Lesson 23 prepares you for the course's final practical assessment. The assessment is deliberately separate from the lesson exercises. You are not being asked to repeat a list of Git commands; you are being placed in an unfamiliar repository with a realistic problem and asked to work it out.
 
 ## The assessment repository
 
@@ -1666,31 +1666,71 @@ Use the official **PaakowTronics Service Desk Final Mastery** repository:
 
 **https://github.com/PaakowTronics/paakowtronics-service-desk-final-mastery**
 
-It was created specifically for learners who have studied **Git Essentials**. The repository contains a realistic Service Desk scenario, existing history, multiple branches, documentation, a prepared integration problem, remote-tracking information, and an instructor-controlled recovery exercise.
+It was created specifically for learners who have studied **Git Essentials**. The repository contains a realistic Service Desk scenario, an existing history, several lines of work on branches, documentation, a deliberately questionable change, a prepared integration problem, remote-tracking information, and a controlled recovery exercise.
 
-## What to do
+The important point is that the repository is intentionally **not clean and obvious**. Some work is useful, some is unrelated, and at least one existing change must be investigated before you decide whether it belongs in the final result.
 
-1. Open the repository and read its `README.md`.
-2. Read `FINAL-MASTERY-CHALLENGE.md`.
-3. Follow the documented setup process.
-4. Work through the challenge without asking for a command-by-command recipe.
-5. Use Git documentation and the repository documentation when you need information.
-6. Inspect and verify your work throughout the assessment.
+## What you are expected to demonstrate
 
-The goal is not to remember every Git command. The goal is to demonstrate that you can **investigate a real repository, make reasoned decisions, perform Git operations, recover from mistakes, and prove the final state is correct.**
+You should be able to:
+
+- enter an unfamiliar repository and establish its state;
+- read the project documentation before acting;
+- translate a business requirement into a Git task;
+- create isolated work and produce a meaningful commit;
+- investigate branches and commit history rather than trusting branch names;
+- identify which existing work is relevant and which is not;
+- integrate work when appropriate;
+- recognize and resolve a real conflict intentionally;
+- detect an existing change that does not satisfy the documented requirement;
+- recover from a deliberately introduced mistake using evidence rather than panic;
+- bring one specific piece of history into your work without unnecessarily bringing unrelated work;
+- understand the local/remote relationship;
+- prove the final repository state with evidence; and
+- explain your decisions in plain language.
+
+## The assessment mindset
+
+Do not begin by asking:
+
+> “Which Git command do I need?”
+
+Begin with:
+
+```text
+What is the business problem?
+        ↓
+What state am I in?
+        ↓
+What evidence does Git already have?
+        ↓
+What result do I need?
+        ↓
+What is the smallest appropriate operation?
+        ↓
+How will I prove it worked?
+```
+
+If the repository does not behave as expected:
+
+```text
+STOP → INSPECT → UNDERSTAND → RECOVER → VERIFY
+```
 
 ## The handoff from the course to the assessment
 
 ```text
 Lessons 01–22
       ↓
-Lesson 23: independent investigation
+Lesson 23: independent investigation and decision-making
       ↓
 Official Final Mastery repository
       ↓
-Realistic Service Desk scenario
+Realistic Service Desk problem
       ↓
-Solve → Verify → Recover → Explain
+Investigate → Decide → Integrate → Recover → Verify → Explain
 ```
 
-When you reach the assessment, resist the temptation to search for a command first. Start by reading the repository's instructions and determining the state you have been given.
+When you reach the assessment, resist the temptation to search for a command first. Read the repository's instructions, understand the business requirement, inspect the state you were given, and then choose the Git operation that fits the situation.
+
+The assessment is successful when your Git decisions are explainable — not merely when the terminal shows a successful command.

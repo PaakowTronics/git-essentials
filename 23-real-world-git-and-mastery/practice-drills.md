@@ -709,6 +709,50 @@ Answer in writing:
 5. How would you verify success?
 6. If you forgot the syntax tomorrow, where would you look?
 
+## Assessment transfer drill — solve without a recipe
+
+This drill is the bridge between guided practice and the final assessment.
+
+Create or use a disposable repository with several branches containing a mixture of relevant, irrelevant, and questionable work. Do not write down the Git command you intend to use before you inspect the repository.
+
+### Scenario
+
+A service team has asked you to update a documented operating policy. Another team has already done work that may be relevant, but its branch contains more than one change. Management also needs one specific item from a separate hotfix line. During the exercise, introduce a realistic mistake and recover from it.
+
+### Your job
+
+Do not solve the exercise by following a command recipe. Instead, record:
+
+```text
+Business requirement:
+Starting repository state:
+Relevant evidence:
+Work that appears relevant:
+Work that appears unrelated:
+Work that requires further investigation:
+Desired final state:
+Operation I chose and why:
+Expected result:
+Actual result:
+Verification evidence:
+Recovery decision (if needed):
+Final explanation:
+```
+
+### Success conditions
+
+You have completed the drill when you can explain:
+
+1. why the work you integrated belonged in the final result;
+2. why any unrelated or questionable work was not blindly adopted;
+3. why the Git operation you selected matched the situation;
+4. how you recognized and handled a conflict or other unexpected state;
+5. how you recovered from the mistake without guessing; and
+6. what evidence proves the repository ended in the intended state.
+
+This is deliberately harder than a command exercise. The purpose is to practise **choosing** the operation, not merely executing one.
+
+
 ## Mastery check
 
 - [ ] I can explain and demonstrate **unfamiliar repositories**.
