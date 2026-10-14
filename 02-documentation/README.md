@@ -890,3 +890,8 @@ You are not expected to memorize the installation command.
 In Lesson 03, we will finally answer:
 
 > **What exactly is Git, and why did we just install it?**
+
+
+## Extended Documentation Missions
+
+For additional documentation-driven exercises that span the course, see [DOCUMENTATION-MISSIONS.md](DOCUMENTATION-MISSIONS.md).

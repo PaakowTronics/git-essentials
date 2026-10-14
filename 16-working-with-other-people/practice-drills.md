@@ -1,569 +1,665 @@
 # 16 — Working With Other People — Practice Drills
 
-## Drill rule
+## Drill philosophy
 
-**Predict → Run → Verify.**
+These drills simulate real collaboration rather than isolated commands.
 
-For each important operation, write down what you expect before running it. If your prediction is wrong, do not hide the mistake — investigate it.
-
-## Practice setup
-
-Use a disposable repository when an exercise can discard or rewrite work. For collaboration exercises, use two local clones or a GitHub practice repository.
-
-## Mission 1 — Feature workflow
-
-### Your prediction
-
-Before running a command, write what you think Git will report or change.
+Use:
 
 ```text
-Starting state:
-Goal:
-Prediction:
-Risk:
-Verification:
+PREDICT → INSPECT → ACT → VERIFY → EXPLAIN
 ```
 
-### Investigation questions
+Whenever possible, work with a test repository and a second GitHub account/fork or a local simulation.
 
-- What does Git know already?
-- What has changed?
-- Which branch or state am I working in?
-- What would happen if I stopped now?
-- What evidence will prove that I achieved the goal?
+Never use production repositories to practice destructive history operations.
 
-### Do the work
+---
 
-Perform the exercise deliberately. Do not copy a later mission as a shortcut. If you need syntax, use your notes, `--help`, or official documentation.
+## Mission 1 — Branch or fork?
+
+For each scenario, decide whether the first structural choice should be a branch or a fork.
+
+### Scenario A
+
+You are a member of your company's repository and have permission to contribute.
+
+### Scenario B
+
+You want to contribute a bug fix to a public project you do not control and cannot directly push to.
+
+### Scenario C
+
+Two developers on the same repository need independent feature work.
+
+### Scenario D
+
+You want your own GitHub-hosted copy of a public project to experiment with independently.
+
+### Explain
+
+For each answer, explain why the other option is less appropriate.
+
+---
+
+## Mission 2 — Build a real fork workflow
+
+Use a public repository that explicitly permits contributions.
+
+### Task
+
+1. Fork the repository on GitHub.
+2. Clone your fork.
+3. Inspect the remote.
+4. Add the original repository as `upstream`.
+5. Verify both remotes.
+
+Use:
+
+```bash
+git remote -v
+```
+
+### Evidence
+
+Your final remote map should be understandable as:
+
+```text
+origin   → my fork
+upstream → original repository
+```
+
+Do not continue until you can explain why these directions matter.
+
+---
+
+## Mission 3 — Fork synchronization investigation
+
+### Scenario
+
+The upstream repository has new commits.
+
+Your fork is behind.
+
+You also have local work on a feature branch.
+
+### Predict
+
+What could go wrong if you simply run random pull commands?
+
+### Investigate
+
+Collect:
+
+```bash
+git status
+git branch -vv
+git remote -v
+git log --oneline --decorate --graph --all -n 30
+```
+
+### Plan
+
+Write down whether you would:
+
+- fetch;
+- merge;
+- rebase;
+- push;
+- or do something else.
+
+Do not perform the operation until you can explain why.
+
+---
+
+## Mission 4 — Create a focused contribution
+
+Create a branch for one small, realistic change.
+
+Examples:
+
+```text
+docs/improve-installation
+fix/validation-message
+feature/search-filter
+```
+
+Make a change small enough that a reviewer can understand it quickly.
+
+Create one or more meaningful commits.
 
 ### Verify
 
-Do not finish the mission when the command finishes. Check the resulting state and compare it with your prediction.
-
-### If something goes wrong
-
-Stop. Do not immediately run another command. Capture the output, inspect the repository state, and decide whether the problem is a location problem, state problem, syntax problem, permission problem, authentication problem, conflict, or something else.
-
-### Evidence to record
-
-Write one or two sentences explaining what proved that your result was correct. This trains you to verify rather than assume.
-
-
-Practice **feature branches** deliberately. Start by inspecting the repository state. Decide what you want to accomplish, predict the result, perform the operation, and verify it.
-
-Record:
+Your branch should tell a coherent story:
 
 ```text
-What I wanted:
-What I expected:
-What happened:
-What I verified:
-What I learned:
+base
+ ↓
+focused change
+ ↓
+verification
 ```
 
-## Mission 2 — Focused commits
+---
 
-### Your prediction
+## Mission 5 — Open a pull request like a professional
 
-Before running a command, write what you think Git will report or change.
+Push your branch and open a pull request against the intended base.
+
+Your PR description must contain:
 
 ```text
-Starting state:
-Goal:
-Prediction:
-Risk:
-Verification:
+Problem
+Why
+What changed
+Testing/verification
+Reviewer focus
+Known limitations
 ```
-
-### Investigation questions
-
-- What does Git know already?
-- What has changed?
-- Which branch or state am I working in?
-- What would happen if I stopped now?
-- What evidence will prove that I achieved the goal?
-
-### Do the work
-
-Perform the exercise deliberately. Do not copy a later mission as a shortcut. If you need syntax, use your notes, `--help`, or official documentation.
 
 ### Verify
 
-Do not finish the mission when the command finishes. Check the resulting state and compare it with your prediction.
+Before asking for review, check:
 
-### If something goes wrong
+- correct base repository;
+- correct base branch;
+- correct head repository;
+- correct head branch;
+- expected changed files;
+- expected commits;
+- no secrets;
+- no unrelated files.
 
-Stop. Do not immediately run another command. Capture the output, inspect the repository state, and decide whether the problem is a location problem, state problem, syntax problem, permission problem, authentication problem, conflict, or something else.
+---
 
-### Evidence to record
+## Mission 6 — Review a pull request
 
-Write one or two sentences explaining what proved that your result was correct. This trains you to verify rather than assume.
+Use a real public PR or a second account/test repository.
 
+Review it as if you were responsible for production quality.
 
-Practice **focused commits** deliberately. Start by inspecting the repository state. Decide what you want to accomplish, predict the result, perform the operation, and verify it.
+Inspect:
 
-Record:
+- description;
+- commits;
+- changed files;
+- checks;
+- issue linkage;
+- security implications.
 
-```text
-What I wanted:
-What I expected:
-What happened:
-What I verified:
-What I learned:
-```
+Write at least:
 
-## Mission 3 — Review
+- one correctness observation;
+- one scope/maintainability observation;
+- one testing observation;
+- one security question.
 
-### Your prediction
+The goal is not to manufacture criticism. If something is good, say why.
 
-Before running a command, write what you think Git will report or change.
+---
 
-```text
-Starting state:
-Goal:
-Prediction:
-Risk:
-Verification:
-```
+## Mission 7 — Simulate requested changes
 
-### Investigation questions
+Have a second contributor/account review your PR and request a specific change.
 
-- What does Git know already?
-- What has changed?
-- Which branch or state am I working in?
-- What would happen if I stopped now?
-- What evidence will prove that I achieved the goal?
+Then:
 
-### Do the work
+1. understand the request;
+2. make the smallest appropriate change;
+3. verify it;
+4. push the update;
+5. respond to the reviewer.
 
-Perform the exercise deliberately. Do not copy a later mission as a shortcut. If you need syntax, use your notes, `--help`, or official documentation.
+### Reflection
 
-### Verify
+Did you need to rewrite existing history to satisfy the review?
 
-Do not finish the mission when the command finishes. Check the resulting state and compare it with your prediction.
+Explain why or why not.
 
-### If something goes wrong
+---
 
-Stop. Do not immediately run another command. Capture the output, inspect the repository state, and decide whether the problem is a location problem, state problem, syntax problem, permission problem, authentication problem, conflict, or something else.
+## Mission 8 — Understand merge strategies
 
-### Evidence to record
+Using a disposable repository, create a small PR and inspect the available merge methods.
 
-Write one or two sentences explaining what proved that your result was correct. This trains you to verify rather than assume.
+Research the repository's configured policy.
 
+Explain the consequences of:
 
-Practice **pull requests** deliberately. Start by inspecting the repository state. Decide what you want to accomplish, predict the result, perform the operation, and verify it.
+- merge commit;
+- squash merge;
+- rebase merge.
 
-Record:
+### Predict
 
-```text
-What I wanted:
-What I expected:
-What happened:
-What I verified:
-What I learned:
-```
-
-## Mission 4 — Pull-request plan
-
-### Your prediction
-
-Before running a command, write what you think Git will report or change.
-
-```text
-Starting state:
-Goal:
-Prediction:
-Risk:
-Verification:
-```
-
-### Investigation questions
-
-- What does Git know already?
-- What has changed?
-- Which branch or state am I working in?
-- What would happen if I stopped now?
-- What evidence will prove that I achieved the goal?
-
-### Do the work
-
-Perform the exercise deliberately. Do not copy a later mission as a shortcut. If you need syntax, use your notes, `--help`, or official documentation.
+Before merging, draw the expected commit graph for each strategy.
 
 ### Verify
 
-Do not finish the mission when the command finishes. Check the resulting state and compare it with your prediction.
+After each experiment in a disposable repository, inspect:
 
-### If something goes wrong
-
-Stop. Do not immediately run another command. Capture the output, inspect the repository state, and decide whether the problem is a location problem, state problem, syntax problem, permission problem, authentication problem, conflict, or something else.
-
-### Evidence to record
-
-Write one or two sentences explaining what proved that your result was correct. This trains you to verify rather than assume.
-
-
-Practice **review** deliberately. Start by inspecting the repository state. Decide what you want to accomplish, predict the result, perform the operation, and verify it.
-
-Record:
-
-```text
-What I wanted:
-What I expected:
-What happened:
-What I verified:
-What I learned:
+```bash
+git log --oneline --decorate --graph --all
 ```
 
-## Mission 5 — Reviewer questions
+Do not perform history experiments on a shared production branch.
 
-### Your prediction
+---
 
-Before running a command, write what you think Git will report or change.
+## Mission 9 — Issue to implementation workflow
+
+Create a practice issue describing a real problem.
+
+Include:
 
 ```text
-Starting state:
-Goal:
-Prediction:
-Risk:
-Verification:
+Problem
+Expected behavior
+Actual behavior
+Reproduction/evidence
+Acceptance criteria
 ```
 
-### Investigation questions
+Then create a branch and implement the change.
 
-- What does Git know already?
-- What has changed?
-- Which branch or state am I working in?
-- What would happen if I stopped now?
-- What evidence will prove that I achieved the goal?
-
-### Do the work
-
-Perform the exercise deliberately. Do not copy a later mission as a shortcut. If you need syntax, use your notes, `--help`, or official documentation.
+Connect the PR to the issue using the repository's supported GitHub workflow.
 
 ### Verify
 
-Do not finish the mission when the command finishes. Check the resulting state and compare it with your prediction.
-
-### If something goes wrong
-
-Stop. Do not immediately run another command. Capture the output, inspect the repository state, and decide whether the problem is a location problem, state problem, syntax problem, permission problem, authentication problem, conflict, or something else.
-
-### Evidence to record
-
-Write one or two sentences explaining what proved that your result was correct. This trains you to verify rather than assume.
-
-
-Practice **synchronisation** deliberately. Start by inspecting the repository state. Decide what you want to accomplish, predict the result, perform the operation, and verify it.
-
-Record:
+Can another developer follow the chain?
 
 ```text
-What I wanted:
-What I expected:
-What happened:
-What I verified:
-What I learned:
+issue → branch/commits → PR → checks/review → merge
 ```
 
-## Mission 6 — Synchronisation
+---
 
-### Your prediction
+## Mission 10 — Labels, assignees, milestones and Projects
 
-Before running a command, write what you think Git will report or change.
+In a practice repository, inspect these features where available.
+
+For each, explain:
+
+- what it represents;
+- who uses it;
+- how it differs from a Git branch;
+- how it helps organize work.
+
+Then design a small project board for:
 
 ```text
-Starting state:
-Goal:
-Prediction:
-Risk:
-Verification:
+Backlog
+In progress
+Review
+Done
 ```
 
-### Investigation questions
+Do not confuse project status with Git branch state.
 
-- What does Git know already?
-- What has changed?
-- Which branch or state am I working in?
-- What would happen if I stopped now?
-- What evidence will prove that I achieved the goal?
+---
 
-### Do the work
+## Mission 11 — Permission investigation
 
-Perform the exercise deliberately. Do not copy a later mission as a shortcut. If you need syntax, use your notes, `--help`, or official documentation.
+### Scenario
+
+You can clone a repository but cannot push to its default branch.
+
+### Task
+
+Do not change credentials.
+
+Investigate these possibilities:
+
+```text
+Authentication
+Authorization
+Repository role
+Branch protection/rules
+Pull-request requirement
+Organization policy
+```
+
+Write a diagnosis tree before testing.
+
+### Mastery question
+
+Why does successful `ssh -T git@github.com` not prove that you can push to a particular repository?
+
+---
+
+## Mission 12 — Protected branch simulation
+
+Use a repository where you have administrative control.
+
+Configure a rule that requires changes to go through a pull request or equivalent review protection supported by the repository.
+
+Then try a direct push from a test branch/workflow.
+
+### Goal
+
+Observe the difference between:
+
+```text
+Git operation is valid
+```
+
+and:
+
+```text
+Repository policy permits the operation
+```
 
 ### Verify
 
-Do not finish the mission when the command finishes. Check the resulting state and compare it with your prediction.
+Record the rejection message and identify whether it is primarily:
 
-### If something goes wrong
+- Git syntax;
+- authentication;
+- authorization;
+- branch/repository policy.
 
-Stop. Do not immediately run another command. Capture the output, inspect the repository state, and decide whether the problem is a location problem, state problem, syntax problem, permission problem, authentication problem, conflict, or something else.
+---
 
-### Evidence to record
+## Mission 13 — GitHub Actions investigation
 
-Write one or two sentences explaining what proved that your result was correct. This trains you to verify rather than assume.
+Find a repository with a visible Actions workflow.
 
+Open a workflow run.
 
-Practice **communication** deliberately. Start by inspecting the repository state. Decide what you want to accomplish, predict the result, perform the operation, and verify it.
+Identify:
 
-Record:
+- event that triggered it;
+- workflow name;
+- jobs;
+- steps;
+- successful checks;
+- failed checks, if any;
+- logs.
 
-```text
-What I wanted:
-What I expected:
-What happened:
-What I verified:
-What I learned:
-```
+### Explain
 
-## Mission 7 — Unrelated work
+What is Git doing?
 
-### Your prediction
+What is GitHub doing?
 
-Before running a command, write what you think Git will report or change.
+What is the workflow runner doing?
 
-```text
-Starting state:
-Goal:
-Prediction:
-Risk:
-Verification:
-```
+These are not the same layer.
 
-### Investigation questions
+---
 
-- What does Git know already?
-- What has changed?
-- Which branch or state am I working in?
-- What would happen if I stopped now?
-- What evidence will prove that I achieved the goal?
+## Mission 14 — Failed CI investigation
 
-### Do the work
+Use a disposable workflow or an existing failed public workflow.
 
-Perform the exercise deliberately. Do not copy a later mission as a shortcut. If you need syntax, use your notes, `--help`, or official documentation.
+Your task is not to fix it immediately.
 
-### Verify
-
-Do not finish the mission when the command finishes. Check the resulting state and compare it with your prediction.
-
-### If something goes wrong
-
-Stop. Do not immediately run another command. Capture the output, inspect the repository state, and decide whether the problem is a location problem, state problem, syntax problem, permission problem, authentication problem, conflict, or something else.
-
-### Evidence to record
-
-Write one or two sentences explaining what proved that your result was correct. This trains you to verify rather than assume.
-
-
-Practice **small versus mixed changes** deliberately. Start by inspecting the repository state. Decide what you want to accomplish, predict the result, perform the operation, and verify it.
-
-Record:
+First classify the failure:
 
 ```text
-What I wanted:
-What I expected:
-What happened:
-What I verified:
-What I learned:
+Git history problem?
+Dependency problem?
+Application test failure?
+Lint failure?
+Build failure?
+Workflow configuration failure?
+Environment failure?
+Permission/security issue?
 ```
 
-## Mission 8 — Shared-history warning
+Then identify the exact log line or step that supports your diagnosis.
 
-### Your prediction
+---
 
-Before running a command, write what you think Git will report or change.
+## Mission 15 — Fork security scenario
+
+### Scenario
+
+A pull request comes from a fork. The workflow requests access to repository secrets.
+
+### Task
+
+Before approving anything, investigate:
+
+- who controls the source branch;
+- what code would execute;
+- what permissions the workflow has;
+- whether secrets are exposed;
+- whether the workflow requires approval;
+- whether the repository's policy permits the workflow.
+
+### Explain
+
+Why can code from a fork be considered untrusted even when the pull request itself looks legitimate?
+
+---
+
+## Mission 16 — Two-person collaboration simulation
+
+Use two GitHub identities or a fork plus an alternate contributor workflow.
+
+### Person A
+
+Creates an issue and opens a feature branch.
+
+### Person B
+
+Reviews the resulting PR.
+
+### Person A
+
+Responds to requested changes.
+
+### Person B
+
+Re-reviews and approves.
+
+### Final verification
+
+Both contributors must be able to explain:
 
 ```text
-Starting state:
-Goal:
-Prediction:
-Risk:
-Verification:
+who changed what
+which repository they pushed to
+which branch contained the work
+which repository/branch the PR targeted
+what checks ran
+what review decisions were made
+what finally entered the target branch
 ```
 
-### Investigation questions
+---
 
-- What does Git know already?
-- What has changed?
-- Which branch or state am I working in?
-- What would happen if I stopped now?
-- What evidence will prove that I achieved the goal?
+## Mission 17 — Origin/upstream rescue
 
-### Do the work
+### Scenario
 
-Perform the exercise deliberately. Do not copy a later mission as a shortcut. If you need syntax, use your notes, `--help`, or official documentation.
+A contributor says:
 
-### Verify
+> “I accidentally pushed my feature branch to the original project instead of my fork.”
 
-Do not finish the mission when the command finishes. Check the resulting state and compare it with your prediction.
+### Investigation
 
-### If something goes wrong
+Ask for:
 
-Stop. Do not immediately run another command. Capture the output, inspect the repository state, and decide whether the problem is a location problem, state problem, syntax problem, permission problem, authentication problem, conflict, or something else.
+```bash
+git remote -v
+git branch -vv
+git status
+```
 
-### Evidence to record
+Determine:
 
-Write one or two sentences explaining what proved that your result was correct. This trains you to verify rather than assume.
+- what `origin` means in this repository;
+- whether an `upstream` remote exists;
+- where the branch was pushed;
+- whether repository policy was violated;
+- what should happen next.
 
+Do not prescribe a destructive fix before understanding the repository's history and team policy.
 
-Practice **shared history** deliberately. Start by inspecting the repository state. Decide what you want to accomplish, predict the result, perform the operation, and verify it.
+---
 
-Record:
+## Mission 18 — PR quality challenge
+
+Take a deliberately poor pull request and improve it.
+
+The poor PR should contain:
+
+- vague title;
+- no problem statement;
+- mixed unrelated changes;
+- no test evidence;
+- unclear target branch.
+
+Your task:
+
+1. identify every reviewability problem;
+2. improve the branch/commits where appropriate;
+3. rewrite the PR description;
+4. provide evidence of verification.
+
+---
+
+## Break-It Exercise — Collaboration failure lab
+
+Create a disposable repository and intentionally produce one of these conditions:
+
+### A
+
+Your fork's `origin` points to the upstream repository.
+
+### B
+
+Your `upstream` remote points to the wrong repository.
+
+### C
+
+Your PR contains an unrelated generated file.
+
+### D
+
+A required check fails.
+
+### E
+
+You cannot push because repository policy requires a pull request.
+
+### F
+
+Your feature branch is based on an outdated target branch.
+
+For each exercise:
 
 ```text
-What I wanted:
-What I expected:
-What happened:
-What I verified:
-What I learned:
+break
+→ inspect
+→ diagnose
+→ fix
+→ verify
+→ explain
 ```
 
-## Mission 9 — Two-person simulation
+---
 
-### Your prediction
+## Troubleshooting Drill — Choose the layer
 
-Before running a command, write what you think Git will report or change.
+Classify each problem before proposing a fix.
+
+### Problem 1
 
 ```text
-Starting state:
-Goal:
-Prediction:
-Risk:
-Verification:
+Permission denied (publickey)
 ```
 
-### Investigation questions
+### Problem 2
 
-- What does Git know already?
-- What has changed?
-- Which branch or state am I working in?
-- What would happen if I stopped now?
-- What evidence will prove that I achieved the goal?
+SSH authentication succeeds, but GitHub says you cannot push to the repository.
 
-### Do the work
+### Problem 3
 
-Perform the exercise deliberately. Do not copy a later mission as a shortcut. If you need syntax, use your notes, `--help`, or official documentation.
+You opened a PR, but it contains the wrong repository's changes.
 
-### Verify
+### Problem 4
 
-Do not finish the mission when the command finishes. Check the resulting state and compare it with your prediction.
+The PR cannot merge because a required check fails.
 
-### If something goes wrong
+### Problem 5
 
-Stop. Do not immediately run another command. Capture the output, inspect the repository state, and decide whether the problem is a location problem, state problem, syntax problem, permission problem, authentication problem, conflict, or something else.
+A fork's workflow tries to access sensitive secrets.
 
-### Evidence to record
+### Problem 6
 
-Write one or two sentences explaining what proved that your result was correct. This trains you to verify rather than assume.
+A contributor cannot find the issue they were told to work on.
 
-
-Practice **team policies** deliberately. Start by inspecting the repository state. Decide what you want to accomplish, predict the result, perform the operation, and verify it.
-
-Record:
+For each, write:
 
 ```text
-What I wanted:
-What I expected:
-What happened:
-What I verified:
-What I learned:
+Likely layer:
+Evidence needed:
+Safe first action:
 ```
 
-## Mission 10 — Boss: complete a mini team workflow
+---
 
-### Your prediction
+## Independent Challenge — Contribute to an unfamiliar open-source repository
 
-Before running a command, write what you think Git will report or change.
+Choose a public repository with contribution instructions.
+
+You are not allowed to use a tutorial that gives you a command-by-command recipe for that exact repository.
+
+You must:
+
+1. read the repository's README;
+2. read contribution guidelines;
+3. identify the correct fork/branch workflow;
+4. fork the repository if appropriate;
+5. clone your fork;
+6. configure `origin` and `upstream` correctly;
+7. choose a small contribution;
+8. create a focused branch;
+9. make a focused commit;
+10. verify the change;
+11. push to your fork;
+12. open a pull request;
+13. describe the change professionally;
+14. respond to at least one review/check outcome.
+
+Your final report must explain **why** you chose each major step.
+
+---
+
+# Mastery Check
+
+Without notes, explain:
+
+1. What is a branch?
+2. What is a fork?
+3. Why are they not the same thing?
+4. What does `origin` normally mean?
+5. What does `upstream` normally mean in a fork workflow?
+6. What is the source/head of a pull request?
+7. What is the base of a pull request?
+8. What is an issue?
+9. What is a review?
+10. What is a required check?
+11. What is GitHub Actions?
+12. Why can a successful SSH test still be followed by a rejected push?
+13. Why might a branch be unable to push directly to `main`?
+14. Why should a fork PR be treated carefully from a security perspective?
+15. What makes a pull request easy to review?
+16. When should you synchronize a fork?
+17. Why should you inspect remotes before changing them?
+18. Why should you avoid exposing secrets to code from untrusted forks?
+
+Then demonstrate both workflows:
 
 ```text
-Starting state:
-Goal:
-Prediction:
-Risk:
-Verification:
+DIRECT
+repository → branch → commit → push → PR → review → merge
+
+FORK
+upstream → fork → clone → origin/upstream → branch → commit → push → PR → review → synchronization
 ```
 
-### Investigation questions
-
-- What does Git know already?
-- What has changed?
-- Which branch or state am I working in?
-- What would happen if I stopped now?
-- What evidence will prove that I achieved the goal?
-
-### Do the work
-
-Perform the exercise deliberately. Do not copy a later mission as a shortcut. If you need syntax, use your notes, `--help`, or official documentation.
-
-### Verify
-
-Do not finish the mission when the command finishes. Check the resulting state and compare it with your prediction.
-
-### If something goes wrong
-
-Stop. Do not immediately run another command. Capture the output, inspect the repository state, and decide whether the problem is a location problem, state problem, syntax problem, permission problem, authentication problem, conflict, or something else.
-
-### Evidence to record
-
-Write one or two sentences explaining what proved that your result was correct. This trains you to verify rather than assume.
-
-
-This is the larger challenge for this section. Build a realistic situation around **A collaboration workflow**.
-
-Before acting, write:
-
-```text
-Goal:
-Current state:
-Prediction:
-Risk:
-Verification:
-```
-
-Then perform the work and compare the actual result with your prediction. Explain any difference.
-
-## Break-It Exercise
-
-Intentionally create a safe, recoverable problem related to **Working With Other People**. Do this only in a disposable repository.
-
-Do not immediately fix it. First inspect the state and write a recovery plan. Then recover and verify.
-
-The exercise is successful only if you can explain what happened and why the recovery worked.
-
-## Troubleshooting Drill
-
-Imagine Git gives you an error you do not recognise. You are not allowed to ask someone for the command.
-
-1. Read the entire message.
-2. Identify the current directory and repository state.
-3. Decide whether the problem is location, syntax, state, permission, authentication, conflict, or something else.
-4. Use `git <command> --help` or official documentation where appropriate.
-5. Make the smallest safe correction.
-6. Verify.
-
-## Independent Challenge
-
-Complete a task involving **Working With Other People** without looking at a previous command sequence. You may consult official documentation. Your final answer should explain the decisions, not merely list commands.
-
-## Reflection
-
-Answer in writing:
-
-1. What problem does this Git feature solve?
-2. What is the most common mistake a beginner could make here?
-3. What information should you inspect before using it?
-4. What could go wrong?
-5. How would you verify success?
-6. If you forgot the syntax tomorrow, where would you look?
-
-## Mastery check
-
-- [ ] I can explain and demonstrate **feature branches**.
-- [ ] I can explain and demonstrate **focused commits**.
-- [ ] I can explain and demonstrate **pull requests**.
-- [ ] I can explain and demonstrate **review**.
-- [ ] I can explain and demonstrate **synchronisation**.
-- [ ] I can explain and demonstrate **shared-history caution**.
-- [ ] I can explain and demonstrate **team conventions**.
-
-> **Final question: If I forget the command tomorrow, do I know how to figure out what I need to do?**
+The final test is not whether you can repeat the workflow. It is whether you can **diagnose where the workflow is currently broken and choose the correct next action**.
